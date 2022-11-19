@@ -21,10 +21,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 
 public final class TestUtil {
     public static File writeTempFile(String content) throws IOException {
-        File tempFile = File.createTempFile("test", null);
+        File tempFile = Files.createTempFile("test", null).toFile();
         tempFile.deleteOnExit();
 
         OutputStream out = new FileOutputStream(tempFile);

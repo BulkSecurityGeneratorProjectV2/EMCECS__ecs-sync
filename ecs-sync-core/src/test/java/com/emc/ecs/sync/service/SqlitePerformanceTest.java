@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.Collections;
 
 public class SqlitePerformanceTest {
@@ -56,7 +57,7 @@ public class SqlitePerformanceTest {
 
         Assertions.assertEquals(0, sync.getStats().getObjectsFailed());
 
-        File dbFile = File.createTempFile("sqlite-perf-test.db", null);
+        File dbFile = Files.createTempFile("sqlite-perf-test.db", null).toFile();
         dbFile.deleteOnExit();
         DbService dbService = new SqliteDbService(dbFile, false);
         for (SyncRecord ignored : dbService.getAllRecords()) {

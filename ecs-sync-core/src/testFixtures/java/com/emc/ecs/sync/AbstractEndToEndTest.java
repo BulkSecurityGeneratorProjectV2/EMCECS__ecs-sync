@@ -41,6 +41,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -242,7 +243,7 @@ public abstract class AbstractEndToEndTest {
 
     protected File createListFile(SyncStorage<?> storage) {
         try {
-            File listFile = File.createTempFile("list-file", null);
+            File listFile = Files.createTempFile("list-file", null).toFile();
             listFile.deleteOnExit();
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(listFile))) {

@@ -41,6 +41,7 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.net.URI;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -583,7 +584,7 @@ public class RestServerTest {
     @Test
     public void testReports() throws Exception {
         try {
-            File tempDb = File.createTempFile("temp.db", null);
+            File tempDb = Files.createTempFile("temp.db", null).toFile();
             tempDb.deleteOnExit();
 
             SyncConfig syncConfig = new SyncConfig();
